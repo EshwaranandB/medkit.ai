@@ -1,21 +1,47 @@
-MIT License
+PROPRIETARY AND CONFIDENTIAL
 
-Copyright (c) 2024 Medkit.AI Team
+Copyright (c) 2024 Medkit.AI Team. All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and associated documentation files (the "Software") are the 
+proprietary and confidential information of Medkit.AI Team. The Software 
+is protected by copyright laws and international copyright treaties, as 
+well as other intellectual property laws and treaties.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+RESTRICTIONS:
+- This Software is NOT open source
+- Redistribution, modification, or commercial use is STRICTLY PROHIBITED
+- Reverse engineering, disassembly, or decompilation is FORBIDDEN
+- The Software may only be used as a service through authorized channels
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+PERMITTED USE:
+- Access to Medkit.AI services through the official website
+- Personal, non-commercial health information and guidance
+- Prescription analysis through the official platform
+- AI chatbot interactions via authorized interfaces
+
+PROHIBITED USE:
+- Copying, distributing, or modifying the Software
+- Creating derivative works or competing services
+- Extracting source code or algorithms
+- Commercial exploitation without written permission
+- Healthcare provider integration without licensing
+
+SERVICE TERMS:
+Medkit.AI is provided as a healthcare information service. Users agree to:
+- Use the service for informational purposes only
+- Not rely solely on AI-generated medical advice
+- Consult healthcare professionals for medical decisions
+- Accept that the service is not a substitute for professional medical care
+
+DISCLAIMER:
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. MEDKIT.AI 
+TEAM DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
+LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL MEDKIT.AI TEAM BE 
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE 
+OF THE SOFTWARE.
+
+For licensing inquiries, commercial partnerships, or healthcare provider 
+integration, contact: https://medkit-ai.vercel.app
+
+Unauthorized use of this Software may result in legal action.

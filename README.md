@@ -2,16 +2,15 @@
 
 <div align="center">
 
-![Medkit.AI Logo](public/logomedkit.png)
 
 **Making Healthcare Accessible Through AI Innovation**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-🏥%20Medkit.AI-brightgreen?style=for-the-badge)](https://medkit-ai.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-🏥%20Medkit.AI-brightgreen?style=for-the-badge)](https://medkitai.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/EshwaranandB/medkit-web)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-+1%20(415)%20523--8886-green?style=for-the-badge&logo=whatsapp)](https://wa.me/14155238886?text=join%20three-fort)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](LICENSE)
 
-*Built with ❤️ for the Puch AI Hackathon*
+*Built with AI*
 
 </div>
 
@@ -363,22 +362,28 @@ DELETE /chat_history/:sessionId
 
 ---
 
-## 🤝 **Contributing**
+## 🤝 **Contributing & Partnerships**
 
-We welcome contributions to make Medkit.AI even better!
+### **Service-Based Collaboration**
+While Medkit.AI is a proprietary service, we welcome:
 
-### **How to Contribute**
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+- **Feedback & Suggestions**: User experience improvements
+- **Bug Reports**: Help us maintain service quality
+- **Feature Requests**: Suggest new healthcare tools
+- **Partnership Opportunities**: Healthcare organizations and enterprises
 
-### **Development Guidelines**
-- Follow existing code style
-- Add tests for new features
-- Update documentation
-- Ensure mobile compatibility
+### **How to Engage**
+1. **User Feedback**: Contact us through our website
+2. **Bug Reports**: Report issues via GitHub issues
+3. **Feature Requests**: Suggest improvements
+4. **Partnerships**: Contact us for commercial licensing
+5. **Healthcare Integration**: Inquire about provider partnerships
+
+### **Development & Innovation**
+- **Internal Development**: Our team continuously improves the platform
+- **AI Model Updates**: Regular enhancements to medical intelligence
+- **Security Updates**: Ongoing healthcare compliance improvements
+- **Mobile Optimization**: Continuous user experience enhancements
 
 ---
 
@@ -396,9 +401,25 @@ We welcome contributions to make Medkit.AI even better!
 
 ---
 
-## 📄 **License**
+## 📄 **License & Service Model**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### **Proprietary Healthcare Service**
+Medkit.AI is a **proprietary healthcare information service**, not open source software. This means:
+
+- **Commercial Use**: The software and algorithms are protected intellectual property
+- **Service-Based**: Access is provided through our official platform only
+- **Healthcare Focus**: Designed specifically for medical information delivery
+- **Professional Standards**: Built with healthcare compliance and safety in mind
+
+### **Usage Terms**
+- **Free Access**: Available to users through our website and services
+- **No Redistribution**: Software cannot be copied, modified, or distributed
+- **Service Integration**: Healthcare providers must contact us for licensing
+- **Commercial Partnerships**: Available for enterprise and healthcare organizations
+
+For licensing inquiries, commercial partnerships, or healthcare provider integration, contact us at [https://medkit-ai.vercel.app](https://medkit-ai.vercel.app)
+
+See the [LICENSE](LICENSE) file for complete terms and restrictions.
 
 ---
 
