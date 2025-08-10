@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="mb-8 md:mb-0">
           <div className="flex items-center mb-2">
             <img 
-              src="/uploads/logo_transparent.png" 
+              src="/logo_transparent.png" 
               alt="Medkit AI Logo" 
               className="h-8 w-auto object-contain"
               style={{ maxHeight: '32px' }}

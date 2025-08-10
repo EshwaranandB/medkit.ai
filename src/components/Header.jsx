@@ -79,7 +79,7 @@ const Header = () => {
             <nav className={`${mode === "full" ? "flex items-center justify-between w-full" : "flex items-center justify-center w-full"}`}>
               {/* Logo */}
               <Link to="/" className="flex items-center focus:outline-none" style={{ textDecoration: 'none' }}>
-                <img src="/uploads/logo.jpg" alt="Medkit AI Logo" className="h-12 w-auto object-contain" style={{ maxHeight: '48px' }} />
+                <img src="/logo.jpg" alt="Medkit AI Logo" className="h-12 w-auto object-contain" style={{ maxHeight: '48px' }} />
               </Link>
 
               {mode === "full" && (
