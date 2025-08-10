@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
+import { API_URLS } from "../config/config";
 
 const SYSTEM_PROMPT = `You are a polite, helpful AI health assistant named Medkit. Respond in English.\nYou may use the user's profile details like name, age, gender, profession, location, and medical history **only if they are available** to personalize the advice.\nDo not ask for personal information unless it is **relevant to the current health question**. Always prioritize user comfort and privacy.`;
 
@@ -60,7 +61,7 @@ const AIHealthAssistant = () => {
 
     try {
       // Call the real chatbot backend (DeepSeek through OpenRouter)
-      const response = await fetch('http://localhost:5002/chat_assistant', {
+      const response = await fetch(`${API_URLS.chatbotApi}/chat_assistant`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +113,7 @@ const AIHealthAssistant = () => {
   const handleClearChat = async () => {
     try {
       // Clear backend conversation history
-      await fetch(`http://localhost:5002/chat_history/${sessionId}`, {
+              await fetch(`${API_URLS.chatbotApi}/chat_history/${sessionId}`, {
         method: 'DELETE'
       });
     } catch (error) {

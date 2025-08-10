@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { jsPDF } from "jspdf";
+import { API_URLS } from "../config/config";
 
 export default function PrescriptionReaderPage() {
   const [file, setFile] = useState(null);
@@ -40,7 +41,7 @@ export default function PrescriptionReaderPage() {
     try {
       await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:5001/analyze_prescription");
+        xhr.open("POST", `${API_URLS.prescriptionApi}/analyze_prescription`);
         xhr.onload = () => {
           if (xhr.status >= 200 && xhr.status < 300) {
             setResult(xhr.responseText);
