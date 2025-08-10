@@ -5,9 +5,8 @@ const config = {
     chatbotApi: 'http://localhost:5002'
   },
   production: {
-    // TODO: Replace with your actual deployed backend URLs
-    prescriptionApi: 'https://your-prescription-backend.railway.app',
-    chatbotApi: 'https://your-chatbot-backend.railway.app'
+    prescriptionApi: 'https://prescriptionbackend.up.railway.app',
+    chatbotApi: 'https://chatbotbackend.up.railway.app'
   }
 };
 
