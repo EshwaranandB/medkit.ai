@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -36,13 +37,13 @@ export default function Footer() {
           <div>
             <div className="font-semibold mb-2">Quick Links</div>
             <div className="flex flex-wrap gap-2">
-              <a href="/" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Home</a>
-              <a href="/stories" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Stories</a>
-              <a href="/tools" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Tools</a>
-              <a href="/features" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Features</a>
-              <a href="/about" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">About</a>
-              <a href="/contact" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Contact</a>
-              <a href="/library" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Health Library</a>
+              <Link to="/" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Home</Link>
+              <Link to="/stories" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Stories</Link>
+              <Link to="/tools" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Tools</Link>
+              <Link to="/features" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Features</Link>
+              <Link to="/about" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">About</Link>
+              <Link to="/contact" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Contact</Link>
+              <Link to="/library" className="bg-white/10 rounded-full px-4 py-2 hover:bg-violet-900 transition">Health Library</Link>
             </div>
           </div>
           <div>
@@ -55,8 +56,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mt-12 border-t border-violet-900 pt-6 text-gray-400 text-xs">
         <div>© {new Date().getFullYear()} Medkit AI. All Rights Reserved.</div>
         <div className="flex gap-4 mt-2 md:mt-0">
-          <a href="/terms" className="hover:text-violet-400">Terms & Conditions</a>
-          <a href="/privacy" className="hover:text-violet-400">Privacy Policy</a>
+          <Link to="/terms" className="hover:text-violet-400">Terms & Conditions</Link>
+          <Link to="/privacy" className="hover:text-violet-400">Privacy Policy</Link>
         </div>
       </div>
     </footer>
