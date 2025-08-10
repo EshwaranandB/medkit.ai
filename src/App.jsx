@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import CoreFeatures from "./components/CoreFeatures";
@@ -66,6 +67,7 @@ function App() {
         </Routes>
         
         <Footer />
+        <Analytics />
       </div>
     </Router>
   );

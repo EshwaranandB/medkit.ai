@@ -9,7 +9,7 @@ const app = express();
 const upload = multer({ dest: 'uploads/' });
 app.use(cors());
 
-const OPENROUTER_API_KEY = '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'; // <-- User's real key
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 const initialPrompt = `## YOUR TASK
