@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Add request logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Body:`, req.body);
+  next();
+});
+
 // Health check endpoint for Railway
 app.get('/', (req, res) => {
   res.json({
@@ -268,6 +274,66 @@ app.get('/mcp', (req, res) => {
       'validate'
     ]
   });
+});
+
+// MCP Protocol endpoint - also handle POST requests
+app.post('/mcp', (req, res) => {
+  try {
+    const { action, ...params } = req.body;
+    
+    switch(action) {
+      case 'connect':
+        res.json({
+          success: true,
+          id: 'medkit-ai-mcp',
+          protocol: 'Model Context Protocol',
+          version: '1.0.0',
+          server: 'Medkit.AI MCP Server',
+          message: 'Successfully connected to Medkit.AI MCP Server',
+          tools: [
+            'search_health_info',
+            'analyze_prescription',
+            'ask_health_question',
+            'explore_health_tools',
+            'validate'
+          ]
+        });
+        break;
+      
+      case 'info':
+        res.json({
+          id: 'medkit-ai-mcp',
+          protocol: 'Model Context Protocol',
+          version: '1.0.0',
+          server: 'Medkit.AI MCP Server',
+          tools: [
+            'search_health_info',
+            'analyze_prescription',
+            'ask_health_question',
+            'explore_health_tools',
+            'validate'
+          ]
+        });
+        break;
+      
+      default:
+        res.json({
+          id: 'medkit-ai-mcp',
+          protocol: 'Model Context Protocol',
+          version: '1.0.0',
+          server: 'Medkit.AI MCP Server',
+          tools: [
+            'search_health_info',
+            'analyze_prescription',
+            'ask_health_question',
+            'explore_health_tools',
+            'validate'
+          ]
+        });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'MCP server error', details: error.message });
+  }
 });
 
 // MCP Manifest endpoint (for better compatibility)
