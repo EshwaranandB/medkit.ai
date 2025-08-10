@@ -1,0 +1,281 @@
+const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
+
+// Initialize Express app
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Health check endpoint for Railway
+app.get('/', (req, res) => {
+  res.json({
+    status: 'healthy',
+    service: 'Medkit.AI MCP Server',
+    version: '1.0.0',
+    hackathon: 'Puch AI Hackathon',
+    description: 'AI Health Assistant Tools for Medkit.AI',
+    tools: [
+      'search_health_info',
+      'analyze_prescription', 
+      'ask_health_question',
+      'explore_health_tools'
+    ],
+    endpoints: {
+      health: 'GET /',
+      search: 'POST /search_health_info',
+      prescription: 'POST /analyze_prescription',
+      chatbot: 'POST /ask_health_question',
+      explore: 'POST /explore_health_tools'
+    }
+  });
+});
+
+// Tool 1: Health Information Search
+app.post('/search_health_info', async (req, res) => {
+  try {
+    const { query } = req.body;
+    
+    if (!query) {
+      return res.status(400).json({ error: 'Query parameter is required' });
+    }
+
+    const response = {
+      tool: 'search_health_info',
+      query: query,
+      results: `🔍 **Medkit.AI Health Search Results for: ${query}**
+
+📚 **Available Information:**
+- Comprehensive health articles and guides
+- Symptom explanations and causes
+- Treatment options and prevention tips
+- Expert medical insights
+
+🌐 **Access Your Results:**
+Visit: https://medkit-ai.vercel.app/library
+Search for: "${query}"
+
+💡 **Features:**
+- AI-powered health search
+- Dynamic content recommendations
+- Mobile-optimized interface
+- Real-time health guidance
+
+🔗 **Direct Access:** https://medkit-ai.vercel.app/library
+
+*Powered by Medkit.AI - Your AI Health Assistant*`
+    };
+    
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Error searching health information' });
+  }
+});
+
+// Tool 2: Prescription Analysis
+app.post('/analyze_prescription', async (req, res) => {
+  try {
+    const { image_url } = req.body;
+    
+    if (!image_url) {
+      return res.status(400).json({ error: 'Image URL parameter is required' });
+    }
+
+    const response = {
+      tool: 'analyze_prescription',
+      image_url: image_url,
+      results: `💊 **Medkit.AI Prescription Analysis**
+
+🔍 **Analysis Features:**
+- Medication identification and explanation
+- Dosage and frequency analysis
+- Side effects and warnings
+- Patient safety recommendations
+- Next steps guidance
+
+📱 **How to Use:**
+1. Visit: https://medkit-ai.vercel.app/prescription-reader
+2. Upload your prescription image
+3. Get instant AI-powered analysis
+4. Receive safety recommendations
+
+🔗 **Direct Access:** https://medkit-ai.vercel.app/prescription-reader
+
+*Powered by Medkit.AI Vision AI*`
+    };
+    
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Error analyzing prescription' });
+  }
+});
+
+// Tool 3: AI Health Chatbot
+app.post('/ask_health_question', async (req, res) => {
+  try {
+    const { question } = req.body;
+    
+    if (!question) {
+      return res.status(400).json({ error: 'Question parameter is required' });
+    }
+
+    const response = {
+      tool: 'ask_health_question',
+      question: question,
+      results: `🤖 **Medkit.AI AI Health Assistant**
+
+❓ **Your Question:** ${question}
+
+💬 **AI Response:**
+Based on your health question, here's what Medkit.AI can help you with:
+
+🔍 **Health Guidance:**
+- Symptom analysis and explanations
+- Treatment recommendations
+- Prevention tips and lifestyle advice
+- Medical information and resources
+
+📱 **Get Personalized Help:**
+Visit: https://medkit-ai.vercel.app/ai-assistant
+Ask your question directly to our AI
+
+💡 **Features:**
+- DeepSeek-powered AI responses
+- 24/7 health support
+- Professional medical insights
+- Context-aware conversations
+
+🔗 **Direct Access:** https://medkit-ai.vercel.app/ai-assistant
+
+*Powered by Medkit.AI DeepSeek AI*`
+    };
+    
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Error processing health question' });
+  }
+});
+
+// Tool 4: Explore Health Tools
+app.post('/explore_health_tools', async (req, res) => {
+  try {
+    const { category } = req.body;
+    
+    let response = {
+      tool: 'explore_health_tools',
+      category: category || 'all',
+      results: `🏥 **Medkit.AI Health Tools Overview**
+
+`
+    };
+    
+    switch(category) {
+      case "search":
+        response.results += `🔍 **Health Search Engine**
+- AI-powered health information search
+- Dynamic content recommendations
+- Comprehensive health library
+- Mobile-optimized interface
+🔗 https://medkit-ai.vercel.app/library`;
+        break;
+      case "prescription":
+        response.results += `💊 **Prescription Analyzer**
+- Vision AI for medication analysis
+- Safety recommendations
+- Dosage explanations
+- Patient guidance
+🔗 https://medkit-ai.vercel.app/prescription-reader`;
+        break;
+      case "chatbot":
+        response.results += `🤖 **AI Health Assistant**
+- DeepSeek-powered chatbot
+- Symptom analysis
+- Health guidance
+- 24/7 availability
+🔗 https://medkit-ai.vercel.app/ai-assistant`;
+        break;
+      case "library":
+        response.results += `📚 **Health Library**
+- Comprehensive health articles
+- Category-based organization
+- Expert medical content
+- Searchable database
+🔗 https://medkit-ai.vercel.app/library`;
+        break;
+      case "features":
+        response.results += `✨ **Core Features**
+- Health search and guidance
+- Prescription analysis
+- AI chatbot support
+- Mobile-first design
+- WhatsApp integration
+🔗 https://medkit-ai.vercel.app/features`;
+        break;
+      default:
+        response.results += `🌟 **All Available Tools:**
+
+🔍 **Health Search Engine**
+- AI-powered information search
+- Dynamic content recommendations
+🔗 https://medkit-ai.vercel.app/library
+
+💊 **Prescription Analyzer**
+- Vision AI for medication safety
+- Professional medical guidance
+🔗 https://medkit-ai.vercel.app/prescription-reader
+
+🤖 **AI Health Assistant**
+- DeepSeek-powered chatbot
+- 24/7 health support
+🔗 https://medkit-ai.vercel.app/ai-assistant
+
+📚 **Health Library**
+- Comprehensive medical content
+- Expert insights and guides
+🔗 https://medkit-ai.vercel.app/library
+
+📱 **Mobile App**
+- Responsive design
+- WhatsApp integration
+- Cross-platform compatibility`;
+    }
+    
+    response.results += `
+
+🏆 **Hackathon Project:**
+This MCP server enables AI assistants to access Medkit.AI's comprehensive health tools, making healthcare information more accessible through various AI platforms.
+
+🔗 **Main Website:** https://medkit-ai.vercel.app`;
+    
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Error exploring health tools' });
+  }
+});
+
+// MCP Protocol endpoint (for compatibility)
+app.get('/mcp', (req, res) => {
+  res.json({
+    protocol: 'Model Context Protocol',
+    version: '1.0.0',
+    server: 'Medkit.AI MCP Server',
+    tools: [
+      'search_health_info',
+      'analyze_prescription',
+      'ask_health_question',
+      'explore_health_tools'
+    ]
+  });
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Medkit.AI MCP Server running on port ${PORT}`);
+  console.log(`🌐 Health check: http://localhost:${PORT}/`);
+  console.log(`🔗 MCP endpoint: http://localhost:${PORT}/mcp`);
+  console.log(`🔗 Access your health tools through AI assistants!`);
+  console.log(`🏆 Ready for hackathon submission!`);
+  console.log(`🚀 Deploy to Railway for public access!`);
+});
