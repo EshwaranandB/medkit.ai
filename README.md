@@ -10,7 +10,7 @@
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-+1%20(415)%20523--8886-green?style=for-the-badge&logo=whatsapp)](https://wa.me/14155238886?text=join%20three-fort)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-*Built with ❤️ for the Puch AI Hackathon*
+*Built with AI*
 
 </div>
 
