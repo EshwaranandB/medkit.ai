@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for Medkit.AI */
+:root {
+  --primary-violet: #7c3aed;
+  --primary-purple: #8b5cf6;
+  --dark-bg: #0f0f23;
+  --dark-secondary: #1a1a2e;
+  --dark-tertiary: #16213e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: #333;
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+#root {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+.App {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed);
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* Text gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #7c3aed;
+  border: 2px solid #7c3aed;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Card styles */
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Glow effects */
+.glow {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+}
+
+/* Header specific styles */
+.header-floating {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero section specific styles */
+.hero-bg {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(139,92,246,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+/* Chat bubble styles */
+.chat-bubble {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: rotate(-2deg);
+  transition: all 0.3s ease;
+  }
+
+.chat-bubble:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Custom table styles (scoped to .custom-table-outer) */
+.custom-table-outer {
+  margin: 2.5rem 0;
+  border-radius: 1.3rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(34,193,195,0.18) 0%, rgba(131,58,180,0.18) 100%);
+  box-shadow: 0 8px 40px 0 #0004, 0 2px 0 0 #7c3aed;
+  border: 2px solid #6366f1;
+  backdrop-filter: blur(8px);
+  /* New: glassy effect, more shadow, subtle border */
+  background: linear-gradient(135deg, #18192b 60%, #23234a 100%);
+  box-shadow: 0 8px 40px 0 #0006, 0 2px 0 0 #7c3aed;
+  border: 2px solid #7c3aed;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+}
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+  font-size: 1.08em;
+}
+.custom-table th.table-th-custom {
+  background: linear-gradient(90deg, #7c3aed 0%, #38bdf8 100%);
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.12em;
+  padding: 1.7em 1.7em;
+  text-align: left;
+  border-bottom: 2px solid #6366f1;
+  border-right: 2px solid #38bdf8;
+  border-top: none;
+  border-left: none;
+  border-radius: 0.7em 0 0 0.7em;
+  box-shadow: 0 1px 8px 0 #6366f133;
+  letter-spacing: 0.01em;
+  vertical-align: top;
+  /* New: glassy, bold, shadow, gradient */
+  background: linear-gradient(90deg, #7c3aed 0%, #6366f1 100%);
+  color: #e0e7ff;
+  text-shadow: 0 1px 8px #6366f199;
+  border-radius: 0.7em 0 0 0.7em;
+}
+.custom-table td.table-td-custom {
+  background: rgba(255,255,255,0.03);
+  color: #e0e7ff;
+  font-size: 1.07em;
+  padding: 1.7em 1.7em;
+  border-bottom: 2px solid #6366f1;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  vertical-align: top;
+  /* New: glassy, subtle border, more padding */
+  background: rgba(124,58,237,0.07);
+  color: #e0e7ff;
+}
+.custom-table tr.table-row-custom.even td, .custom-table tr.table-row-custom.even th {
+  background: rgba(131,58,180,0.13);
+}
+.custom-table tr.table-row-custom.odd td, .custom-table tr.table-row-custom.odd th {
+  background: rgba(34,193,195,0.13);
+}
+.custom-table tr.table-row-custom:hover td, .custom-table tr.table-row-custom:hover th {
+  background: #6366f1 !important;
+  color: #fff !important;
+  transform: scale(1.01);
+  filter: brightness(1.08);
+}
+.custom-table th, .custom-table td {
+  transition: background 0.2s, color 0.2s, transform 0.2s, filter 0.2s;
+}
+.custom-table th.table-th-custom, .custom-table td.table-td-custom {
+  line-height: 1.8;
+}
+@media (max-width: 700px) {
+  .custom-table th.table-th-custom, .custom-table td.table-td-custom {
+    padding: 0.7em 0.7em;
+    font-size: 0.98em;
+  }
+  .custom-table-outer {
+    margin: 1.2rem 0;
+    border-radius: 0.7rem;
+    padding: 0.2rem 0.2rem 0.7rem 0.2rem;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+  }
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #7c3aed;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
