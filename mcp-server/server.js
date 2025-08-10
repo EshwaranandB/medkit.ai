@@ -1,5 +1,27 @@
 const { Server } = require("@modelcontextprotocol/sdk");
 const axios = require("axios");
+const cors = require("cors");
+const express = require("express");
+
+// Initialize Express app for health checks
+const app = express();
+app.use(cors());
+
+// Health check endpoint for Railway
+app.get('/', (req, res) => {
+  res.json({
+    status: 'healthy',
+    service: 'Medkit.AI MCP Server',
+    version: '1.0.0',
+    hackathon: 'Puch AI Hackathon',
+    tools: [
+      'search_health_info',
+      'analyze_prescription', 
+      'ask_health_question',
+      'explore_health_tools'
+    ]
+  });
+});
 
 // Initialize MCP Server
 const server = new Server({
@@ -249,8 +271,16 @@ This MCP server enables AI assistants to access Medkit.AI's comprehensive health
   }
 });
 
-// Start the server
+// Start both Express app and MCP server
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🌐 Express health check server running on port ${PORT}`);
+  console.log(`🔗 Health check: http://localhost:${PORT}/`);
+});
+
 server.listen();
 console.log("🚀 Medkit.AI MCP Server running on port 3000");
 console.log("🔗 Access your health tools through AI assistants!");
 console.log("🏆 Ready for hackathon submission!");
+console.log("🚀 Deploy to Railway for public access!");
