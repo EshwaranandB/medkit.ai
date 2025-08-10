@@ -285,32 +285,38 @@ app.post('/mcp', (req, res) => {
   try {
     console.log('POST /mcp received:', { body: req.body, headers: req.headers });
     
-    // Handle any POST request to /mcp - be very permissive
+    // Based on Puch AI starter template, return a simple success response
     const response = {
-      success: true,
-      id: 'medkit-ai-mcp',
-      protocol: 'Model Context Protocol',
-      version: '1.0.0',
-      server: 'Medkit.AI MCP Server',
-      message: 'Successfully connected to Medkit.AI MCP Server',
-      tools: [
-        'search_health_info',
-        'analyze_prescription',
-        'ask_health_question',
-        'explore_health_tools',
-        'validate'
-      ],
-      capabilities: {
-        tools: true,
-        resources: false,
-        prompts: false
+      jsonrpc: "2.0",
+      id: req.body.id || 1,
+      result: {
+        id: 'medkit-ai-mcp',
+        protocol: 'Model Context Protocol',
+        version: '1.0.0',
+        server: 'Medkit.AI MCP Server',
+        message: 'Successfully connected to Medkit.AI MCP Server',
+        tools: [
+          'search_health_info',
+          'analyze_prescription',
+          'ask_health_question',
+          'explore_health_tools',
+          'validate'
+        ]
       }
     };
     
     res.json(response);
   } catch (error) {
     console.error('Error in POST /mcp:', error);
-    res.status(500).json({ error: 'MCP server error', details: error.message });
+    res.status(500).json({ 
+      jsonrpc: "2.0",
+      id: req.body.id || 1,
+      error: {
+        code: -32603,
+        message: 'Internal error',
+        data: error.message
+      }
+    });
   }
 });
 
@@ -333,26 +339,131 @@ app.get('/manifest.json', (req, res) => {
   });
 });
 
+// MCP Tools endpoint (for tool definitions)
+app.get('/tools', (req, res) => {
+  res.json({
+    jsonrpc: "2.0",
+    id: 1,
+    result: {
+      tools: [
+        {
+          name: "search_health_info",
+          description: "Search for comprehensive health information and guidance",
+          inputSchema: {
+            type: "object",
+            properties: {
+              query: {
+                type: "string",
+                description: "Health-related search query"
+              }
+            },
+            required: ["query"]
+          }
+        },
+        {
+          name: "analyze_prescription",
+          description: "Analyze prescription images for medication safety and guidance",
+          inputSchema: {
+            type: "object",
+            properties: {
+              image_url: {
+                type: "string",
+                description: "URL of prescription image to analyze"
+              }
+            },
+            required: ["image_url"]
+          }
+        },
+        {
+          name: "ask_health_question",
+          description: "Get AI-powered health guidance and answers to medical questions",
+          inputSchema: {
+            type: "object",
+            properties: {
+              question: {
+                type: "string",
+                description: "Health question to ask the AI assistant"
+              }
+            },
+            required: ["question"]
+          }
+        },
+        {
+          name: "explore_health_tools",
+          description: "Explore available health tools and features",
+          inputSchema: {
+            type: "object",
+            properties: {
+              category: {
+                type: "string",
+                description: "Category of tools to explore (search, prescription, chatbot, library, features, or all)",
+                enum: ["search", "prescription", "chatbot", "library", "features", "all"]
+              }
+            }
+          }
+        },
+        {
+          name: "validate",
+          description: "Validate bearer token and return user phone number",
+          inputSchema: {
+            type: "object",
+            properties: {
+              bearer_token: {
+                type: "string",
+                description: "Bearer token for authentication"
+              }
+            },
+            required: ["bearer_token"]
+          }
+        }
+      ]
+    }
+  });
+});
+
 // MCP validate tool (required for Puch AI connection)
 app.post('/validate', async (req, res) => {
   try {
+    console.log('POST /validate received:', { body: req.body, headers: req.headers });
+    
     const { bearer_token } = req.body;
     
     if (!bearer_token) {
-      return res.status(400).json({ error: 'Bearer token is required' });
+      return res.status(400).json({ 
+        jsonrpc: "2.0",
+        id: req.body.id || 1,
+        error: {
+          code: -32602,
+          message: 'Invalid params',
+          data: 'Bearer token is required'
+        }
+      });
     }
 
     // For demo purposes, return a placeholder phone number
     // In production, you'd validate the token and return the actual user's phone
     const response = {
-      tool: 'validate',
-      bearer_token: bearer_token,
-      phone_number: '919876543210' // Placeholder: +91-9876543210
+      jsonrpc: "2.0",
+      id: req.body.id || 1,
+      result: {
+        tool: 'validate',
+        bearer_token: bearer_token,
+        phone_number: '919876543210' // Placeholder: +91-9876543210
+      }
     };
     
     res.json(response);
   } catch (error) {
-    res.status(500).json({ error: 'Error validating token' });
+    console.error('Error in /validate:', error);
+    res.status(500).json({ 
+      jsonrpc: "2.0",
+      id: req.body.id || 1,
+      error: {
+        code: -32603,
+        message: 'Internal error',
+        data: error.message
+      }
+    });
   }
 });
 
