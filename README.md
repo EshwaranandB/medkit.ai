@@ -6,7 +6,7 @@
 **Making Healthcare Accessible Through AI Innovation**
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-🏥%20Medkit.AI-brightgreen?style=for-the-badge)](https://medkitai.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/EshwaranandB/medkit-web)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/EshwaranandB/medkit.ai)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-+1%20(415)%20523--8886-green?style=for-the-badge&logo=whatsapp)](https://wa.me/14155238886?text=join%20three-fort)
 [![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](LICENSE)
 
@@ -174,7 +174,7 @@ medkit-ai/
 
 ```bash
 # Clone the repository
-git clone https://github.com/EshwaranandB/medkit-web.git
+git clone https://github.com/EshwaranandB/medkit.ai.git
 cd medkit-web
 
 # Install dependencies
@@ -392,7 +392,7 @@ While Medkit.AI is a proprietary service, we welcome:
 ### **Get in Touch**
 - **Website**: [https://medkit-ai.vercel.app](https://medkit-ai.vercel.app)
 - **WhatsApp**: [+1 (415) 523-8886](https://wa.me/14155238886?text=join%20three-fort)
-- **GitHub**: [https://github.com/EshwaranandB/medkit-web](https://github.com/EshwaranandB/medkit-web)
+- **GitHub**: [https://github.com/EshwaranandB/medkit.ai](https://github.com/EshwaranandB/medkit.ai)
 
 ### **Support Channels**
 - **Documentation**: Comprehensive guides and tutorials
@@ -440,7 +440,7 @@ See the [LICENSE](LICENSE) file for complete terms and restrictions.
 
 *Making healthcare accessible through AI innovation*
 
-[![Star on GitHub](https://img.shields.io/github/stars/EshwaranandB/medkit-web?style=social)](https://github.com/EshwaranandB/medkit-web)
-[![Fork on GitHub](https://img.shields.io/github/forks/EshwaranandB/medkit-web?style=social)](https://github.com/EshwaranandB/medkit-web)
+[![Star on GitHub](https://img.shields.io/github/stars/EshwaranandB/medkit.ai?style=social)](https://github.com/EshwaranandB/medkit.ai)
+[![Fork on GitHub](https://img.shields.io/github/forks/EshwaranandB/medkit.ai?style=social)](https://github.com/EshwaranandB/medkit.ai)
 
 </div>
