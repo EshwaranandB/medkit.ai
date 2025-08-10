@@ -2,11 +2,10 @@
 
 <div align="center">
 
-![Medkit.AI Logo](public/logomedkit.png)
 
 **Making Healthcare Accessible Through AI Innovation**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-🏥%20Medkit.AI-brightgreen?style=for-the-badge)](https://medkit-ai.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-🏥%20Medkit.AI-brightgreen?style=for-the-badge)](https://medkitai.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/EshwaranandB/medkit-web)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-+1%20(415)%20523--8886-green?style=for-the-badge&logo=whatsapp)](https://wa.me/14155238886?text=join%20three-fort)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
