@@ -264,7 +264,8 @@ app.get('/mcp', (req, res) => {
       'search_health_info',
       'analyze_prescription',
       'ask_health_question',
-      'explore_health_tools'
+      'explore_health_tools',
+      'validate'
     ]
   });
 });
@@ -282,9 +283,33 @@ app.get('/manifest.json', (req, res) => {
       'search_health_info',
       'analyze_prescription',
       'ask_health_question',
-      'explore_health_tools'
+      'explore_health_tools',
+      'validate'
     ]
   });
+});
+
+// MCP validate tool (required for Puch AI connection)
+app.post('/validate', async (req, res) => {
+  try {
+    const { bearer_token } = req.body;
+    
+    if (!bearer_token) {
+      return res.status(400).json({ error: 'Bearer token is required' });
+    }
+
+    // For demo purposes, return a placeholder phone number
+    // In production, you'd validate the token and return the actual user's phone
+    const response = {
+      tool: 'validate',
+      bearer_token: bearer_token,
+      phone_number: '919876543210' // Placeholder: +91-9876543210
+    };
+    
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Error validating token' });
+  }
 });
 
 // Start the server
