@@ -256,9 +256,28 @@ This MCP server enables AI assistants to access Medkit.AI's comprehensive health
 // MCP Protocol endpoint (for compatibility)
 app.get('/mcp', (req, res) => {
   res.json({
+    id: 'medkit-ai-mcp',
     protocol: 'Model Context Protocol',
     version: '1.0.0',
     server: 'Medkit.AI MCP Server',
+    tools: [
+      'search_health_info',
+      'analyze_prescription',
+      'ask_health_question',
+      'explore_health_tools'
+    ]
+  });
+});
+
+// MCP Manifest endpoint (for better compatibility)
+app.get('/manifest.json', (req, res) => {
+  res.json({
+    id: 'medkit-ai-mcp',
+    protocol: 'Model Context Protocol',
+    version: '1.0.0',
+    server: 'Medkit.AI MCP Server',
+    name: 'Medkit.AI Health Tools',
+    description: 'Access to comprehensive health information, prescription analysis, and AI-powered health assistance',
     tools: [
       'search_health_info',
       'analyze_prescription',
