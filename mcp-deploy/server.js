@@ -9,7 +9,11 @@ app.use(express.json());
 
 // Add request logging middleware
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Body:`, req.body);
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  console.log('Headers:', req.headers);
+  console.log('Body:', req.body);
+  console.log('Query:', req.query);
+  console.log('---');
   next();
 });
 
@@ -279,59 +283,33 @@ app.get('/mcp', (req, res) => {
 // MCP Protocol endpoint - also handle POST requests
 app.post('/mcp', (req, res) => {
   try {
-    const { action, ...params } = req.body;
+    console.log('POST /mcp received:', { body: req.body, headers: req.headers });
     
-    switch(action) {
-      case 'connect':
-        res.json({
-          success: true,
-          id: 'medkit-ai-mcp',
-          protocol: 'Model Context Protocol',
-          version: '1.0.0',
-          server: 'Medkit.AI MCP Server',
-          message: 'Successfully connected to Medkit.AI MCP Server',
-          tools: [
-            'search_health_info',
-            'analyze_prescription',
-            'ask_health_question',
-            'explore_health_tools',
-            'validate'
-          ]
-        });
-        break;
-      
-      case 'info':
-        res.json({
-          id: 'medkit-ai-mcp',
-          protocol: 'Model Context Protocol',
-          version: '1.0.0',
-          server: 'Medkit.AI MCP Server',
-          tools: [
-            'search_health_info',
-            'analyze_prescription',
-            'ask_health_question',
-            'explore_health_tools',
-            'validate'
-          ]
-        });
-        break;
-      
-      default:
-        res.json({
-          id: 'medkit-ai-mcp',
-          protocol: 'Model Context Protocol',
-          version: '1.0.0',
-          server: 'Medkit.AI MCP Server',
-          tools: [
-            'search_health_info',
-            'analyze_prescription',
-            'ask_health_question',
-            'explore_health_tools',
-            'validate'
-          ]
-        });
-    }
+    // Handle any POST request to /mcp - be very permissive
+    const response = {
+      success: true,
+      id: 'medkit-ai-mcp',
+      protocol: 'Model Context Protocol',
+      version: '1.0.0',
+      server: 'Medkit.AI MCP Server',
+      message: 'Successfully connected to Medkit.AI MCP Server',
+      tools: [
+        'search_health_info',
+        'analyze_prescription',
+        'ask_health_question',
+        'explore_health_tools',
+        'validate'
+      ],
+      capabilities: {
+        tools: true,
+        resources: false,
+        prompts: false
+      }
+    };
+    
+    res.json(response);
   } catch (error) {
+    console.error('Error in POST /mcp:', error);
     res.status(500).json({ error: 'MCP server error', details: error.message });
   }
 });
@@ -376,6 +354,36 @@ app.post('/validate', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error validating token' });
   }
+});
+
+// Global error handler - catch any errors and prevent 400s
+app.use((error, req, res, next) => {
+  console.error('Global error handler caught:', error);
+  res.status(500).json({ 
+    error: 'Internal server error', 
+    message: 'Something went wrong',
+    details: process.env.NODE_ENV === 'development' ? error.message : 'Contact support'
+  });
+});
+
+// 404 handler for unmatched routes
+app.use('*', (req, res) => {
+  console.log('404 - Route not found:', req.method, req.originalUrl);
+  res.status(404).json({ 
+    error: 'Route not found',
+    message: 'The requested endpoint does not exist',
+    available_endpoints: [
+      'GET /',
+      'GET /mcp',
+      'GET /manifest.json',
+      'POST /mcp',
+      'POST /validate',
+      'POST /search_health_info',
+      'POST /analyze_prescription',
+      'POST /ask_health_question',
+      'POST /explore_health_tools'
+    ]
+  });
 });
 
 // Start the server
