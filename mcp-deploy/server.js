@@ -289,11 +289,13 @@ app.post('/mcp', (req, res) => {
     const { method, params } = req.body;
     
     if (method === 'initialize') {
-      // MCP initialization handshake
+      // MCP initialization handshake - simplified for Puch AI
       console.log('Handling initialize method...');
-      const response = {
+      
+      // Send response immediately without complex logic
+      res.json({
         jsonrpc: "2.0",
-        id: req.body.id || 0,
+        id: 0,
         result: {
           protocolVersion: "2025-06-18",
           capabilities: {
@@ -306,10 +308,10 @@ app.post('/mcp', (req, res) => {
             version: "1.0.0"
           }
         }
-      };
-      console.log('Sending initialize response:', response);
-      res.json(response);
-      return; // Ensure we exit early
+      });
+      
+      console.log('Initialize response sent successfully');
+      return;
     } else if (method === 'tools/list') {
       // Return available tools
       const response = {
@@ -556,6 +558,21 @@ app.get('/test', (req, res) => {
     message: 'Server is responding',
     timestamp: new Date().toISOString(),
     status: 'ok'
+  });
+});
+
+// Simple MCP test endpoint
+app.post('/mcp-test', (req, res) => {
+  console.log('MCP test endpoint hit:', req.body);
+  
+  // Simple response that should work
+  res.json({
+    jsonrpc: "2.0",
+    id: 0,
+    result: {
+      message: "MCP test successful",
+      timestamp: new Date().toISOString()
+    }
   });
 });
 
