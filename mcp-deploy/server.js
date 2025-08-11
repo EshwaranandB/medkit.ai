@@ -557,7 +557,20 @@ app.get('/test', (req, res) => {
   res.json({
     message: 'Server is responding',
     timestamp: new Date().toISOString(),
-    status: 'ok'
+    status: 'ok',
+    version: '1.0.2',
+    deployment_id: DEPLOYMENT_ID
+  });
+});
+
+// Force redeploy endpoint
+app.get('/force-redeploy', (req, res) => {
+  res.json({
+    message: 'FORCE REDEPLOY TRIGGERED',
+    timestamp: new Date().toISOString(),
+    version: '1.0.2',
+    deployment_id: DEPLOYMENT_ID,
+    force: true
   });
 });
 
@@ -654,14 +667,17 @@ app.use('*', (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 3000;
 const STARTUP_TIME = new Date().toISOString();
+const DEPLOYMENT_ID = `DEPLOY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
 app.listen(PORT, () => {
   console.log(`🚀 Medkit.AI MCP Server v1.0.2 running on port ${PORT}`);
   console.log(`⏰ Startup Time: ${STARTUP_TIME}`);
+  console.log(`🆔 Deployment ID: ${DEPLOYMENT_ID}`);
   console.log(`🌐 Health check: http://localhost:${PORT}/`);
   console.log(`🔗 MCP endpoint: http://localhost:${PORT}/mcp`);
   console.log(`🔗 Access your health tools through AI assistants!`);
   console.log(`🏆 Ready for hackathon submission!`);
   console.log(`🚀 Deploy to Railway for public access!`);
   console.log(`🆕 NEW: Simplified MCP handshake implemented!`);
+  console.log(`🔧 FORCE REDEPLOY: ${new Date().toISOString()}`);
 });
