@@ -653,12 +653,15 @@ app.use('*', (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 3000;
+const STARTUP_TIME = new Date().toISOString();
 
 app.listen(PORT, () => {
-  console.log(`🚀 Medkit.AI MCP Server running on port ${PORT}`);
+  console.log(`🚀 Medkit.AI MCP Server v1.0.2 running on port ${PORT}`);
+  console.log(`⏰ Startup Time: ${STARTUP_TIME}`);
   console.log(`🌐 Health check: http://localhost:${PORT}/`);
   console.log(`🔗 MCP endpoint: http://localhost:${PORT}/mcp`);
   console.log(`🔗 Access your health tools through AI assistants!`);
   console.log(`🏆 Ready for hackathon submission!`);
   console.log(`🚀 Deploy to Railway for public access!`);
+  console.log(`🆕 NEW: Simplified MCP handshake implemented!`);
 });
