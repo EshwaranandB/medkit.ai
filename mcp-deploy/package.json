@@ -1,6 +1,6 @@
 {
   "name": "medkit-ai-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP Server for Medkit.AI - AI Health Assistant Tools",
   "main": "server.js",
   "scripts": {
