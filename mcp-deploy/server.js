@@ -563,6 +563,16 @@ app.get('/test', (req, res) => {
   });
 });
 
+// Simple health check for validate endpoint
+app.get('/validate-test', (req, res) => {
+  res.json({
+    message: 'Validate endpoint test',
+    timestamp: new Date().toISOString(),
+    phone_number: '919493897711',
+    status: 'working'
+  });
+});
+
 // Force redeploy endpoint
 app.get('/force-redeploy', (req, res) => {
   res.json({
@@ -632,6 +642,24 @@ app.post('/validate', async (req, res) => {
       }
     });
   }
+});
+
+// GET handler for validate endpoint (for compatibility)
+app.get('/validate', (req, res) => {
+  console.log('GET /validate received:', { headers: req.headers, query: req.query });
+  
+  // Return basic validation info for GET requests
+  res.json({
+    jsonrpc: "2.0",
+    id: 1,
+    result: {
+      tool: 'validate',
+      message: 'Validate endpoint is working',
+      phone_number: '919493897711',
+      method: 'GET',
+      note: 'Use POST /validate with bearer_token for authentication'
+    }
+  });
 });
 
 // Global error handler - catch any errors and prevent 400s
