@@ -285,27 +285,115 @@ app.post('/mcp', (req, res) => {
   try {
     console.log('POST /mcp received:', { body: req.body, headers: req.headers });
     
-    // Based on Puch AI starter template, return a simple success response
-    const response = {
-      jsonrpc: "2.0",
-      id: req.body.id || 1,
-      result: {
-        id: 'medkit-ai-mcp',
-        protocol: 'Model Context Protocol',
-        version: '1.0.0',
-        server: 'Medkit.AI MCP Server',
-        message: 'Successfully connected to Medkit.AI MCP Server',
-        tools: [
-          'search_health_info',
-          'analyze_prescription',
-          'ask_health_question',
-          'explore_health_tools',
-          'validate'
-        ]
-      }
-    };
+    // Handle different types of MCP requests
+    const { method, params } = req.body;
     
-    res.json(response);
+    if (method === 'initialize') {
+      // MCP initialization handshake
+      const response = {
+        jsonrpc: "2.0",
+        id: req.body.id || 1,
+        result: {
+          protocolVersion: "2024-11-05",
+          capabilities: {
+            tools: {},
+            resources: {},
+            prompts: {}
+          },
+          serverInfo: {
+            name: "Medkit.AI MCP Server",
+            version: "1.0.0"
+          }
+        }
+      };
+      res.json(response);
+    } else if (method === 'tools/list') {
+      // Return available tools
+      const response = {
+        jsonrpc: "2.0",
+        id: req.body.id || 1,
+        result: {
+          tools: [
+            {
+              name: "search_health_info",
+              description: "Search for comprehensive health information and guidance",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  query: { type: "string", description: "Health-related search query" }
+                },
+                required: ["query"]
+              }
+            },
+            {
+              name: "analyze_prescription",
+              description: "Analyze prescription images for medication safety and guidance",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  image_url: { type: "string", description: "URL of prescription image to analyze" }
+                },
+                required: ["image_url"]
+              }
+            },
+            {
+              name: "ask_health_question",
+              description: "Get AI-powered health guidance and answers to medical questions",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  question: { type: "string", description: "Health question to ask the AI assistant" }
+                },
+                required: ["question"]
+              }
+            },
+            {
+              name: "explore_health_tools",
+              description: "Explore available health tools and features",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  category: { type: "string", description: "Category of tools to explore" }
+                }
+              }
+            },
+            {
+              name: "validate",
+              description: "Validate bearer token and return user phone number",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  bearer_token: { type: "string", description: "Bearer token for authentication" }
+                },
+                required: ["bearer_token"]
+              }
+            }
+          ]
+        }
+      };
+      res.json(response);
+    } else {
+      // Default response for other methods
+      const response = {
+        jsonrpc: "2.0",
+        id: req.body.id || 1,
+        result: {
+          id: 'medkit-ai-mcp',
+          protocol: 'Model Context Protocol',
+          version: '1.0.0',
+          server: 'Medkit.AI MCP Server',
+          message: 'Successfully connected to Medkit.AI MCP Server',
+          tools: [
+            'search_health_info',
+            'analyze_prescription',
+            'ask_health_question',
+            'explore_health_tools',
+            'validate'
+          ]
+        }
+      };
+      res.json(response);
+    }
   } catch (error) {
     console.error('Error in POST /mcp:', error);
     res.status(500).json({ 
@@ -419,6 +507,43 @@ app.get('/tools', (req, res) => {
       ]
     }
   });
+});
+
+// MCP Initialize endpoint (for proper handshake)
+app.post('/initialize', (req, res) => {
+  try {
+    console.log('POST /initialize received:', { body: req.body, headers: req.headers });
+    
+    const response = {
+      jsonrpc: "2.0",
+      id: req.body.id || 1,
+      result: {
+        protocolVersion: "2024-11-05",
+        capabilities: {
+          tools: {},
+          resources: {},
+          prompts: {}
+        },
+        serverInfo: {
+          name: "Medkit.AI MCP Server",
+          version: "1.0.0"
+        }
+      }
+    };
+    
+    res.json(response);
+  } catch (error) {
+    console.error('Error in /initialize:', error);
+    res.status(500).json({ 
+      jsonrpc: "2.0",
+      id: req.body.id || 1,
+      error: {
+        code: -32603,
+        message: 'Internal error',
+        data: error.message
+      }
+    });
+  }
 });
 
 // MCP validate tool (required for Puch AI connection)
