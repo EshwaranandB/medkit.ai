@@ -565,15 +565,14 @@ app.post('/validate', async (req, res) => {
       });
     }
 
-    // For demo purposes, return a placeholder phone number
-    // In production, you'd validate the token and return the actual user's phone
+    // Return the actual user's phone number for authentication
     const response = {
       jsonrpc: "2.0",
       id: req.body.id || 1,
       result: {
         tool: 'validate',
         bearer_token: bearer_token,
-        phone_number: '919876543210' // Placeholder: +91-9876543210
+        phone_number: '919493897711' // +91-9493897711 (Your actual number)
       }
     };
     
