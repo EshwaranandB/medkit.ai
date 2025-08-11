@@ -290,9 +290,10 @@ app.post('/mcp', (req, res) => {
     
     if (method === 'initialize') {
       // MCP initialization handshake
+      console.log('Handling initialize method...');
       const response = {
         jsonrpc: "2.0",
-        id: req.body.id || 1,
+        id: req.body.id || 0,
         result: {
           protocolVersion: "2025-06-18",
           capabilities: {
@@ -306,7 +307,9 @@ app.post('/mcp', (req, res) => {
           }
         }
       };
+      console.log('Sending initialize response:', response);
       res.json(response);
+      return; // Ensure we exit early
     } else if (method === 'tools/list') {
       // Return available tools
       const response = {
@@ -516,7 +519,7 @@ app.post('/initialize', (req, res) => {
     
     const response = {
       jsonrpc: "2.0",
-      id: req.body.id || 1,
+      id: req.body.id || 0,
       result: {
         protocolVersion: "2025-06-18",
         capabilities: {
@@ -531,12 +534,13 @@ app.post('/initialize', (req, res) => {
       }
     };
     
+    console.log('Sending /initialize response:', response);
     res.json(response);
   } catch (error) {
     console.error('Error in /initialize:', error);
     res.status(500).json({ 
       jsonrpc: "2.0",
-      id: req.body.id || 1,
+      id: req.body.id || 0,
       error: {
         code: -32603,
         message: 'Internal error',
@@ -544,6 +548,15 @@ app.post('/initialize', (req, res) => {
       }
     });
   }
+});
+
+// Test endpoint for debugging
+app.get('/test', (req, res) => {
+  res.json({
+    message: 'Server is responding',
+    timestamp: new Date().toISOString(),
+    status: 'ok'
+  });
 });
 
 // MCP validate tool (required for Puch AI connection)
