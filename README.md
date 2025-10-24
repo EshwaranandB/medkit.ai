@@ -391,7 +391,6 @@ While Medkit.AI is a proprietary service, we welcome:
 
 ### **Get in Touch**
 - **Website**: [https://medkit-ai.vercel.app](https://medkit-ai.vercel.app)
-- **WhatsApp**: [+1 (415) 523-8886](https://wa.me/14155238886?text=join%20three-fort)
 - **GitHub**: [https://github.com/EshwaranandB/medkit.ai](https://github.com/EshwaranandB/medkit.ai)
 
 ### **Support Channels**
@@ -430,13 +429,13 @@ See the [LICENSE](LICENSE) file for complete terms and restrictions.
 - **Kimi Vision** for image analysis capabilities
 - **Vercel** for frontend hosting
 - **Railway** for backend infrastructure
-- **Puch AI** for the hackathon opportunity
+- **INTELLIFY** for the hackathon opportunity
 
 ---
 
 <div align="center">
 
-**🏆 Built for the Puch AI Hackathon**
+**🏆 Built for the INTELLIFY 3.0 Hackathon**
 
 *Making healthcare accessible through AI innovation*
 
